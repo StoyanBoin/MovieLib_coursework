@@ -1,4 +1,4 @@
-import { Injectable, inject, signal, computed, Inject } from '@angular/core';
+import { Injectable, inject, signal, computed } from '@angular/core';
 import { UserService } from './user';
 import { User } from '../../shared/interfaces/user';
 
