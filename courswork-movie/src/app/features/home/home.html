@@ -1,0 +1,44 @@
+<section class="home-hero">
+
+    <div class="hero-content">
+      <h1>Welcome to MovieLib</h1>
+  
+      <p class="subtitle">
+        Your personal movie and series discovery platform.  
+        Explore trending titles, browse detailed information, read curated blog posts  
+        and build your own favorites collection — all in one place.
+      </p>
+  
+      <p class="description">
+        MovieLib is designed to give you a clean, modern and intuitive experience.  
+        Whether you're searching for the latest blockbusters, timeless classics,  
+        or hidden gems, our library helps you find exactly what you're looking for.
+      </p>
+  
+      <div class="hero-actions">
+        <a routerLink="/movies" class="btn-primary">Browse Movies</a>
+        <a routerLink="/blog" class="btn-secondary">Visit Blog</a>
+      </div>
+    </div>
+  
+    <div class="hero-trending">
+      <h2>Trending This Week</h2>
+  
+      <!-- <div class="trending-grid">
+        <div class="trending-card" *ngFor="let movie of trendingMovies | slice:0:6">
+          <img
+            *ngIf="movie.poster_path"
+            [src]="'https://image.tmdb.org/t/p/w300' + movie.poster_path"
+            [alt]="movie.title"
+          />
+  
+          <div class="trending-info">
+            <h3>{{ movie.title }}</h3>
+            <span class="rating">{{ movie.vote_average | number:'1.1-1' }}</span>
+          </div>
+        </div>
+      </div> -->
+    </div>
+  
+  </section>
+  

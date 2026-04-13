@@ -1,0 +1,53 @@
+<section class="movie-details" *ngIf="movie">
+    <div class="poster-column">
+      <img [src]="'https://image.tmdb.org/t/p/w500' + movie.poster_path"
+           [alt]="movie.title" />
+      <button class="btn-primary full" (click)="toggleFavorite()">
+        {{ isFavorite ? 'Remove from favorites' : 'Add to favorites' }}
+      </button>
+    </div>
+  
+    <div class="info-column">
+      <h1>{{ movie.title }}</h1>
+  
+      <div class="meta">
+        <span>{{ movie.release_date | date:'yyyy' }}</span>
+        <span>•</span>
+        <span>{{ movie.runtime }} min</span>
+        <span>•</span>
+        <span class="rating-badge">{{ movie.vote_average | number:'1.1-1' }}</span>
+      </div>
+  
+      <div class="genres">
+        <span class="genre-chip" *ngFor="let g of movie.genres">{{ g.name }}</span>
+      </div>
+  
+      <p class="overview">
+        {{ movie.overview }}
+      </p>
+  
+      <section class="details-section" *ngIf="cast?.length">
+        <h2>Cast</h2>
+        <div class="cast-grid">
+          <div class="cast-card" *ngFor="let c of cast | slice:0:8">
+            <div class="avatar-skeleton" *ngIf="!c.profile_path"></div>
+            <img *ngIf="c.profile_path"
+                 [src]="'https://image.tmdb.org/t/p/w185' + c.profile_path"
+                 [alt]="c.name" />
+            <div class="cast-info">
+              <span class="name">{{ c.name }}</span>
+              <span class="character">{{ c.character }}</span>
+            </div>
+          </div>
+        </div>
+      </section>
+  
+      <section class="details-section">
+        <h2>Blog notes</h2>
+        <p class="muted">
+          You can later connect this section with your blog or comments feature.
+        </p>
+      </section>
+    </div>
+  </section>
+  
