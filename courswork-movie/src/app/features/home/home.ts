@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { MovieList } from './movie-list/movie-list';
+import { MovieList } from '../movies/movie-list/movie-list';
 import { RecentPost } from './recent-post/recent-post';
 
 @Component({
