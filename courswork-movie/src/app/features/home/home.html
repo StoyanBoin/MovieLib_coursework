@@ -20,9 +20,11 @@
         <a routerLink="/blog" class="btn-secondary">Visit Blog</a>
       </div>
     </div>
-  
+
     <div class="hero-trending">
       <h2>Trending This Week</h2>
+      <app-movie-list/>
+      <app-recent-post/>
   
       <!-- <div class="trending-grid">
         <div class="trending-card" *ngFor="let movie of trendingMovies | slice:0:6">
