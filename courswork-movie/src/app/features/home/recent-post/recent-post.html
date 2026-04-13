@@ -1,1 +1,4 @@
 <p>recent-post works!</p>
+    @for (post of posts; track post._id) {
+        <app-post-item [post]="post"/>
+    }
