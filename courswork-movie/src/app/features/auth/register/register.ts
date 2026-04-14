@@ -3,13 +3,13 @@ import { FormsModule } from '@angular/forms';
 import { UserService } from '../../../core/services/user';
 import { AuthService } from '../../../core/services/auth';
 import { User, UserWithPassword } from '../../../shared/interfaces/user';
-import { Router } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 
 
 
 @Component({
   selector: 'app-register',
-  imports: [FormsModule],
+  imports: [FormsModule, RouterLink],
   templateUrl: './register.html',
   styleUrl: './register.css',
 })

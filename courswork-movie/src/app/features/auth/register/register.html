@@ -1,52 +1,37 @@
 <section class="auth-wrapper">
-    <div class="auth-card">
-      <h1>Register</h1>
-      <p class="subtitle">Create an account to save favorites and more.</p>
-  
-      <form (ngSubmit)="onRegister()">
-        <label>
-          Name
-          <input type="text"
-                 name="name"
-                 required
-                 [(ngModel)]="username" />
-        </label>
-  
-        <label>
-          Email
-          <input type="email"
-                 name="email"
-                 required
-                 [(ngModel)]="email" />
-        </label>
-  
-        <label>
-          Password
-          <input type="password"
-                 name="password"
-                 required
-                 minlength="6"
-                 [(ngModel)]="password" />
-        </label>
-  
-        <label>
-          Confirm Password
-          <input type="password"
-                 name="rePassword"
-                 required
-                 minlength="6"
-                 [(ngModel)]="rePassword" />
-        </label>
-  
-        <button class="btn-primary full" type="submit">
-          Create account
-        </button>
-  
-        <p class="auth-switch">
-          Already have an account?
-          <a routerLink="/login">Login</a>
-        </p>
-      </form>
-    </div>
-  </section>
-  
+  <div class="auth-card">
+    <h1>Register</h1>
+    <p class="subtitle">Create an account to save favorites and more.</p>
+
+    <form (ngSubmit)="onRegister()">
+      <label>
+        Name
+        <input type="text" name="name" required [(ngModel)]="username" />
+      </label>
+
+      <label>
+        Email
+        <input type="email" name="email" required [(ngModel)]="email" />
+      </label>
+
+      <label>
+        Password
+        <input type="password" name="password" required minlength="6" [(ngModel)]="password" />
+      </label>
+
+      <label>
+        Confirm Password
+        <input type="password" name="rePassword" required minlength="6" [(ngModel)]="rePassword" />
+      </label>
+
+      <button class="btn-primary full" type="submit">
+        Create account
+      </button>
+
+      <p class="auth-switch">
+        Already have an account?
+        <a routerLink="/login">Login</a>
+      </p>
+    </form>
+  </div>
+</section>

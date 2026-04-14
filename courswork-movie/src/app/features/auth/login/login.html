@@ -1,1 +1,27 @@
-<p>login works!</p>
+<section class="auth-wrapper">
+    <div class="auth-card">
+        <h1>Login</h1>
+        <p class="subtitle">Access your favorites and personalized content.</p>
+
+        <form (ngSubmit)="onLogin()">
+            <label>
+                Email
+                <input type="email" name="email" required [(ngModel)]="email" />
+            </label>
+
+            <label>
+                Password
+                <input type="password" name="password" required minlength="6" [(ngModel)]="password" />
+            </label>
+
+            <button class="btn-primary full" type="submit">
+                Login
+            </button>
+
+            <p class="auth-switch">
+                Don't have an account?
+                <a routerLink="/register">Register</a>
+            </p>
+        </form>
+    </div>
+</section>
