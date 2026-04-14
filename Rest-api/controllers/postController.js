@@ -1,11 +1,12 @@
-const { userModel, themeModel, postModel } = require('../models');
+const { userModel, themeModel, postModel, movieModel } = require('../models');
 
 function newPost(text, userId, themeId) {
     return postModel.create({ text, userId, themeId })
         .then(post => {
             return Promise.all([
                 userModel.updateOne({ _id: userId }, { $push: { posts: post._id }, $addToSet: { themes: themeId } }),
-                themeModel.findByIdAndUpdate({ _id: themeId }, { $push: { posts: post._id }, $addToSet: { subscribers: userId } }, { new: true })
+                themeModel.findByIdAndUpdate({ _id: themeId }, { $push: { posts: post._id }, $addToSet: { subscribers: userId } }, { new: true }),
+                movieModel.findOneAndUpdate({ _id: themeId }, { $push: { posts: post._id }, $addToSet: { subscribers: userId } }, { new: true }),
             ])
         })
 }
@@ -59,6 +60,7 @@ function deletePost(req, res, next) {
         postModel.findOneAndDelete({ _id: postId, userId }),
         userModel.findOneAndUpdate({ _id: userId }, { $pull: { posts: postId } }),
         themeModel.findOneAndUpdate({ _id: themeId }, { $pull: { posts: postId } }),
+        movieModel.findOneAndUpdate({ _id: themeId }, { $pull: { posts: postId } }),
     ])
         .then(([deletedOne, _, __]) => {
             if (deletedOne) {
