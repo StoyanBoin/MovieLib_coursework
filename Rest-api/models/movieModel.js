@@ -6,6 +6,12 @@ const movieSchema = new mongoose.Schema({
         type: String,
         required: true
     },
+    imageUrl: {
+        type: String,
+        required: false,
+        default: "",
+        trim: true
+    },
     subscribers: [{
         type: ObjectId,
         ref: "User"
