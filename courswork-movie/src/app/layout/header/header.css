@@ -60,7 +60,19 @@
     }
   
     .btn-primary {
-      padding: 0.35rem 0.9rem;
+      padding: 0.4rem 0.9rem;
+      border-radius: 999px;
+      background: #38bdf8;
+      color: #020617;
+      font-weight: 600;
+      transition: 0.2s ease;
+  
+      &:hover {
+        background: #0ea5e9;
+      }
+    }
+        .btn-secondary {
+      padding: 0.7rem 1.2rem;
       border-radius: 999px;
       background: #38bdf8;
       color: #020617;

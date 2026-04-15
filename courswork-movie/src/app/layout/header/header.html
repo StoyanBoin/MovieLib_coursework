@@ -1,22 +1,25 @@
 <header class="app-header">
-    <div class="logo">
-      <a routerLink="/">MovieLib</a>
-    </div>
-  
-    <nav class="nav">
-      <a routerLink="/" routerLinkActive="active">Home</a>
-      <a routerLink="/movies" routerLinkActive="active">Movies</a>
-      <a routerLink="/blog" routerLinkActive="active">Blog</a>
-      <a routerLink="/favorites" routerLinkActive="active">Favorites</a>
-    </nav>
-  <!-- @if (!isLoggedIn()) {
-    <p>Please log in to access your account.</p>
-  } else {
-    <p>Welcome back!</p>
-  } -->
-    <div class="auth-links">
-      <a routerLink="/login">Login</a>
-      <a routerLink="/register" class="btn-primary">Register</a>
-    </div>
-  </header>
-  
+  <div class="logo">
+    <a routerLink="/">MovieLib</a>
+  </div>
+
+  <nav class="nav">
+    <a routerLink="/" routerLinkActive="active">Home</a>
+    <a routerLink="/movies" routerLinkActive="active">Movies</a>
+    <a routerLink="/blog" routerLinkActive="active">Blog</a>
+    <a routerLink="/favorites" routerLinkActive="active">Favorites</a>
+  </nav>
+  @if (!isLoggedIn()) {
+  <div class="auth-links">
+    <a routerLink="/login">Login</a>
+    <a routerLink="/register" class="btn-primary">Register</a>
+  </div>
+  }
+  @if (isLoggedIn()) {
+  <div class="auth-links">
+    <a routerLink="/profile">Profile</a>
+    <button (click)="onLogout()" class="btn-secondary">Logout</button>
+  </div>
+  }
+
+</header>
