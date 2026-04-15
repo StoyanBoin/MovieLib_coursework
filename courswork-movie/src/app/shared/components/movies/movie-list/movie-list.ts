@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Api } from '../../../core/services/api';
-import { Movie } from '../../../shared/interfaces/movie';
+import { Api } from '../../../../core/services/api';
+import { Movie } from '../../../interfaces/movie';
 
 
 @Component({
