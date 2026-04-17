@@ -6,6 +6,9 @@
   <nav class="nav">
     <a routerLink="/" routerLinkActive="active">Home</a>
     <a routerLink="/movies" routerLinkActive="active">Movies</a>
+    @if (isLoggedIn()) {
+    <a routerLink="/new-movie" routerLinkActive="active">Add Movie</a>  
+    }
     <a routerLink="/blog" routerLinkActive="active">Blog</a>
     <a routerLink="/favorites" routerLinkActive="active">Favorites</a>
   </nav>

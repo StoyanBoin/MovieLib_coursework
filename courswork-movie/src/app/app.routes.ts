@@ -1,6 +1,7 @@
 import { Routes } from '@angular/router';
 import { Home } from './features/home/home';
 import { Movies } from './shared/components/movies/movies';
+import { NewMovie } from './shared/components/movies/new-movie/new-movie';
 import { Blog } from './shared/components/blog/blog';
 import { Favorites } from './shared/components/favorites/favorites';
 import { authGuard } from './core/guards/auth.guard';
@@ -14,6 +15,7 @@ export const routes: Routes = [
     { path: '', redirectTo: 'home', pathMatch: 'full' },
     { path: 'home', component: Home },
     { path: 'movies', component: Movies },
+    { path: 'new-movie', component: NewMovie, canActivate: [authGuard] },
     { path: 'blog', component: Blog },
     { path: 'favorites', component: Favorites, canActivate: [authGuard] },
     { path: 'profile', component: Profile },
