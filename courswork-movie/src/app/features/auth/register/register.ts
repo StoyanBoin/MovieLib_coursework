@@ -19,12 +19,13 @@ export class Register {
   private authService = inject(AuthService);
 
   username = '';
-  email = ''
+  email = '';
+  telephone = '';
   password = '';
   rePassword = '';
 
   onRegister(): void {
-    if (!this.email || !this.password || !this.username) {
+    if (!this.email || !this.password || !this.username ) {
       alert('Please fill in all fields');
       return;
     }
@@ -36,6 +37,7 @@ export class Register {
       _id: '', 
       username: this.username,
       email: this.email,
+      telephone: this.telephone,
       password: this.password,
     };
     

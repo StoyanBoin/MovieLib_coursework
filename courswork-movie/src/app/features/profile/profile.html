@@ -8,6 +8,8 @@
 
     <h2 class="username">Username: {{ user()?.username }} </h2>
     <p class="email">Email: {{ user()?.email }}</p>
+    <p class="telephone">Telephone: {{ user()?.telephone || 'No telephone available.' }}</p>
+
 
     <!-- <div class="stats">
       <div class="stat-box">
