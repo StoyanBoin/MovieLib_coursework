@@ -1,0 +1,51 @@
+.not-found-wrapper {
+  min-height: calc(100vh - 80px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1.5rem;
+}
+
+.not-found-card {
+  text-align: center;
+  background: #020617;
+  border: 1px solid rgba(148, 163, 184, 0.4);
+  border-radius: 1rem;
+  padding: 2.5rem 2rem;
+  max-width: 420px;
+  width: 100%;
+}
+
+.code {
+  font-size: 4rem;
+  margin: 0;
+  color: #38bdf8;
+  font-weight: 800;
+}
+
+.title {
+  margin: 0.5rem 0 1rem;
+  font-size: 1.5rem;
+  color: #e5e7eb;
+}
+
+.message {
+  margin-bottom: 1.8rem;
+  color: #9ca3af;
+  font-size: 0.95rem;
+}
+
+.btn-primary {
+  background: #38bdf8;
+  color: #020617;
+  padding: 0.6rem 1.6rem;
+  border-radius: 999px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.2s ease;
+  border: none;
+
+  &:hover {
+    background: #0ea5e9;
+  }
+}

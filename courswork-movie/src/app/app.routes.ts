@@ -8,6 +8,7 @@ import { Profile } from './features/profile/profile';
 
 import { Login } from './features/auth/login/login';
 import { Register } from './features/auth/register/register';
+import { NotFound } from './features/not-found/not-found';
 
 export const routes: Routes = [
     { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -19,4 +20,5 @@ export const routes: Routes = [
 
     { path: 'login', component: Login },
     { path: 'register', component: Register },
+    { path: '**', component: NotFound}
 ];
