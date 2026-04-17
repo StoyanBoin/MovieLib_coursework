@@ -19,5 +19,8 @@ export class Header {
     this.authService.logout();
     this.router.navigate(['/']);
   }
+  getUser() {
+    return this.authService.currentUser();
+  }
 
 }

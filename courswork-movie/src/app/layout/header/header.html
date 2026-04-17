@@ -17,7 +17,7 @@
   }
   @if (isLoggedIn()) {
   <div class="auth-links">
-    <a routerLink="/profile">Profile</a>
+    <a routerLink="/profile" class="btn-profile">{{ getUser()?.username }}'s profile</a>
     <button (click)="onLogout()" class="btn-secondary">Logout</button>
   </div>
   }
