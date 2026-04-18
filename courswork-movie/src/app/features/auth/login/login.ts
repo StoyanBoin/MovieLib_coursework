@@ -5,6 +5,7 @@ import { FormBuilder, FormGroup, FormsModule, Validators } from '@angular/forms'
 import { InputError } from '../../../shared/directives/input-error';
 import { emailValidator } from '../../../shared/validators/email.validater';
 import { ReactiveFormsModule } from '@angular/forms';
+import { NotificationService } from '../../../core/services/notification';
 
 @Component({
   selector: 'app-login',
@@ -14,6 +15,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 })
 export class Login { 
   private authService = inject(AuthService);
+  private notificationService = inject(NotificationService);
   private router = inject(Router);
   private fb = inject(FormBuilder);
   
@@ -23,7 +25,6 @@ export class Login {
   });
 
   isLoading = false;
-  errMessage = '';
 
   onLogin(): void {
     if (this.loginForm.invalid) {
@@ -32,23 +33,19 @@ export class Login {
     }
 
     this.isLoading = true;
-    this.errMessage = '';
 
     const { email, password } = this.loginForm.value;
+
     this.authService.login({ email, password }).subscribe({
       next: (user) => {
         this.isLoading = false;
         this.authService.setSession(user);
+        this.notificationService.showSuccess('Login successful!');
         this.router.navigate(['/']);
-        if (user) {
-          this.router.navigate(['/']);
-        } else {
-          this.errMessage = 'Invalid email or password';
-        }
+        
       },
       error: (err) => {
         this.isLoading = false;
-        this.errMessage = err.error?.message || 'Login failed. Please try again.';
       }
     });
   }

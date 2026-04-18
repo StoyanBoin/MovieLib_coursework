@@ -58,9 +58,6 @@
       @if (registerForm.invalid && registerForm.touched) {
       <p class="error">Please fill in all required fields correctly.</p>
       }
-      @if (errMessage) {
-      <p class="error">{{ errMessage }}</p>
-      }
 
       <button class="btn-primary full" type="submit" [disabled]="registerForm.invalid ||isLoading">
         {{ isLoading ? 'Registering...' : 'Register' }}

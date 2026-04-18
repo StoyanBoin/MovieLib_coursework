@@ -6,6 +6,7 @@ import { Router, RouterLink } from '@angular/router';
 import { ReactiveFormsModule } from '@angular/forms';
 import { emailValidator } from '../../../shared/validators/email.validater';
 import { passwordsValidator } from '../../../shared/validators/passwords.validater';
+import { NotificationService } from '../../../core/services/notification';
 
 
 
@@ -17,6 +18,7 @@ import { passwordsValidator } from '../../../shared/validators/passwords.validat
 })
 export class Register {
   private router = inject(Router);
+  private notificationService = inject(NotificationService);
   private authService = inject(AuthService);
   private fb = inject(FormBuilder);
 
@@ -31,7 +33,6 @@ export class Register {
   });
 
   isLoading = false;
-  errMessage = '';
 
   get passwordsGroup(): FormGroup {
     return this.registerForm.get('passwords') as FormGroup;
@@ -44,7 +45,6 @@ export class Register {
     }
 
     this.isLoading = true;
-    this.errMessage = '';
     
     const { username, email, telephone, passwords } = this.registerForm.value;
 
@@ -59,11 +59,12 @@ export class Register {
       next: (user) => {
         this.authService.setSession(user);
         this.isLoading = false;
+        this.notificationService.showSuccess('Registration successful!');
         this.router.navigate(['/']);
       },
       error: (err) => {
         this.isLoading = false;
-        this.errMessage = err.error?.message || 'Registration failed. Please try again.';
+        this.notificationService.showError('Registration failed. Please try again.');
       }
     });
   }

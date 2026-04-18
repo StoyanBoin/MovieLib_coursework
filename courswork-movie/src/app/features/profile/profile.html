@@ -41,9 +41,6 @@
           <input appInputError type="tel" name="telephone" [(ngModel)]="editTelephone" />
         </label>
 
-        @if (errorMessage()) {
-        <p class="error">{{ errorMessage() }}</p>
-        }
 
         <div class="actions">
           <button class="btn-primary" type="button" (click)="onSave()" [disabled]="profileForm.invalid || isLoading()">

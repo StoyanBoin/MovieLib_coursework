@@ -3,6 +3,7 @@ import { AuthService } from '../../core/services/auth';
 import { FormsModule, NgForm } from '@angular/forms';
 import { InputError } from '../../shared/directives/input-error';
 import { EmailValidater } from '../../shared/directives/email-validater';
+import { NotificationService } from '../../core/services/notification';
 
 @Component({
   selector: 'app-profile',
@@ -14,12 +15,12 @@ export class Profile implements OnInit {
   @ViewChild('profileForm') profileForm!: NgForm;
 
   private authService = inject(AuthService);
+  private notificationService = inject(NotificationService);
 
   user = this.authService.currentUser;
 
   isEditing = signal(false);
   isLoading = signal(false);
-  errorMessage = signal('');
 
   editUsername = '';
   editEmail = ''
@@ -41,12 +42,10 @@ export class Profile implements OnInit {
       this.editEmail = currentUser.email;
       this.editTelephone = currentUser.telephone?.replace('+359', '') || '';
     }
-    this.errorMessage.set('');
     this.isEditing.set(true);
   }
 
   onCancel(): void {
-    this.errorMessage.set('');
     this.isEditing.set(false);
   }
 
@@ -56,7 +55,6 @@ export class Profile implements OnInit {
     }
 
     this.isLoading.set(true);
-    this.errorMessage.set('');
 
     const updatedData = {
       username: this.editUsername,
@@ -69,10 +67,10 @@ export class Profile implements OnInit {
         this.authService.setSession(updatedUser);
         this.isLoading.set(false);
         this.isEditing.set(false);
+        this.notificationService.showSuccess('Profile updated successfully!');
       },
       error: (err) => {
         this.isLoading.set(false);
-        this.errorMessage.set(err.error?.message || 'Failed to update profile. Please try again.');
       }
     });
 

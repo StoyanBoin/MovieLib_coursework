@@ -36,12 +36,6 @@
                     placeholder="Enter subscriber names..." />
             </div>
 
-            @if (errorMessage) {
-            <div class="error-message">
-                {{ errorMessage }}
-            </div>
-            }
-
             <div class="actions">
                 <button class="btn-primary" type="submit" [disabled]="movieForm.invalid || isLoading">
                     {{ isLoading ? 'Adding...' : 'Add Movie' }}

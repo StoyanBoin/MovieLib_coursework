@@ -3,6 +3,7 @@ import { FormsModule, NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { InputError } from '../../../directives/input-error';
 import { Api } from '../../../../core/services/api';
+import { NotificationService } from '../../../../core/services/notification';
 
 @Component({
   selector: 'app-new-movie',
@@ -18,10 +19,10 @@ export class NewMovie {
   subscribers: '' = '';
   postText = '';
   isLoading = false;
-  errorMessage = '';
 
   private router = inject(Router);
   private apiService = inject(Api);
+  private notificationService = inject(NotificationService);
 
   onSubmit(): void {
     if (this.movieForm.invalid) {
@@ -29,7 +30,6 @@ export class NewMovie {
     }
 
     this.isLoading = true;
-    this.errorMessage = '';
 
     this.apiService.createMovie({
       movieName: this.movieName,
@@ -39,11 +39,12 @@ export class NewMovie {
     }).subscribe({
       next: (movie) => {
         this.isLoading = false;
+        this.notificationService.showSuccess('Movie created successfully!');
         this.router.navigate(['/movies', movie._id]);
       },
       error: (err) => {
         this.isLoading = false;
-        this.errorMessage = err.error?.message || 'Failed to create movie. Please try again.';
+        this.notificationService.showError('Failed to create movie. Please try again.');
       }
     });
   }

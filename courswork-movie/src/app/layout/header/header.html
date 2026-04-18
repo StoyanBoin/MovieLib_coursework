@@ -24,5 +24,10 @@
     <button (click)="onLogout()" class="btn-secondary">Logout</button>
   </div>
   }
-
+@if (notification()) {
+  <div class="notification" [class.success]="notification()?.type === 'success'" [class.error]="notification()?.type === 'error'">
+    {{ notification()?.message }}
+  </div>
+  }
+  
 </header>
