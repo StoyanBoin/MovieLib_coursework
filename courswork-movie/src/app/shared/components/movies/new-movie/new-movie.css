@@ -90,3 +90,44 @@ form {
     cursor: not-allowed;
   }
 }
+.actions {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-top: 1rem;
+
+  button {
+    flex: 1;
+    padding: 0.7rem 1.4rem;
+    border-radius: 999px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.2s ease;
+    border: none;
+  }
+
+  .btn-primary {
+    background: #38bdf8;
+    color: #020617;
+
+    &:hover {
+      background: #0ea5e9;
+    }
+
+    &:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+  }
+
+  .btn-cancel {
+    background: #1e293b;
+    color: #e5e7eb;
+    border: 1px solid rgba(148, 163, 184, 0.3);
+
+    &:hover {
+      background: #334155;
+      border-color: #475569;
+    }
+  }
+}

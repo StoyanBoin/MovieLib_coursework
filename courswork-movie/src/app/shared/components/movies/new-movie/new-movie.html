@@ -1,43 +1,40 @@
 <section class="new-movie-wrapper">
 
-  <div class="new-movie-card">
+    <div class="new-movie-card">
 
-    <h1 class="title">Add New Movie</h1>
+        <h1 class="title">Add New Movie</h1>
 
-    <!-- <form (ngSubmit)="onSubmit()" [formGroup]="form">
+        <form (ngSubmit)="onSubmit()">
+
+            <div class="form-group">
+                <label for="movieName">Movie Name</label>
+                <input id="movieName" type="text" [(ngModel)]="movieName" placeholder="Enter movie name..." />
+            </div>
+
+            <div class="form-group">
+                <label for="imageUrl">Image URL</label>
+                <input id="imageUrl" type="text" [(ngModel)]="imageUrl" placeholder="https://example.com/poster.jpg" />
+            </div>
+
+            <div class="form-group">
+                <label for="description">Description</label>
+                <textarea id="description" [(ngModel)]="subscribers"
+                    placeholder="Enter movie description..."></textarea>
+            </div>
+
+            <div class="actions">
+                <button class="btn-primary" type="submit" >
+                    Create Movie
+                </button>
+
+                <button class="btn-cancel" type="button" (click)="onCancel()">
+                    Cancel
+                </button>
+            </div>
 
 
-      <div class="form-group">
-        <label for="movieName">Movie Name</label>
-        <input
-          id="movieName"
-          type="text"
-          formControlName="movieName"
-          placeholder="Enter movie name..."
-        />
-      </div>
+        </form>
 
-      <div class="form-group">
-        <label for="imageUrl">Image URL</label>
-        <input
-          id="imageUrl"
-          type="text"
-          formControlName="imageUrl"
-          placeholder="https://example.com/poster.jpg"
-        />
-      </div>
-
-
-      <div class="preview" *ngIf="form.value.imageUrl">
-        <img [src]="form.value.imageUrl" alt="Preview" />
-      </div>
-
-      <button class="btn-primary" type="submit" [disabled]="form.invalid">
-        Create Movie
-      </button> 
-
-    </form> -->
-
-  </div>
+    </div>
 
 </section>
