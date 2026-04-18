@@ -7,3 +7,8 @@ export interface Movie {
     }
     subscribers: string[];
 }
+
+export interface CreateMovie {
+    movieName: string,
+    postText: string,
+}

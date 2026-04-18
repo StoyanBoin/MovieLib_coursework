@@ -1,24 +1,20 @@
-import { Injectable } from '@angular/core';
-import { User, UserWithPassword } from '../../shared/interfaces/user';
+import { inject, Injectable } from '@angular/core';
+import { ProfileUpdate, User } from '../../shared/interfaces/user';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
 export class UserService {
-  private users: UserWithPassword[] = [];
+  private http = inject(HttpClient);
+  private apiUrl = 'http://localhost:3000/api';
 
-  register(user: UserWithPassword): User {
-    this.users.push(user);
-    const { password, ...userWithoutPassword } = user;
-    return userWithoutPassword;
+  getProfile(): Observable<User> {
+    return this.http.get<User>(`${this.apiUrl}/users/profile`, { withCredentials: true });
   }
 
-  validateCredentials(email: string, password: string): User | null {
-    const user = this.users.find(u => u.email === email && u.password === password);
-    if (!user) {
-      return null;
-    }
-    const { password: _, ...userWithoutPassword } = user;
-    return userWithoutPassword;
+  updateProfile(profileData: ProfileUpdate): Observable<User> {
+    return this.http.put<User>(`${this.apiUrl}/users/profile`, profileData, { withCredentials: true });
   }
 }
