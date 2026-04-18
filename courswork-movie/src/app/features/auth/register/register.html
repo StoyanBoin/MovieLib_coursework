@@ -3,34 +3,67 @@
     <h1>Register</h1>
     <p class="subtitle">Create an account to save favorites and more.</p>
 
-    <form (ngSubmit)="onRegister()">
+    <form [formGroup]="registerForm" (ngSubmit)="onRegister()">
       <label>
         Name
-        <input type="text" name="name" required [(ngModel)]="username" />
+        <input type="text" name="name" required formControlName="username" />
       </label>
+
+      @if (
+      registerForm.get('username')?.invalid &&
+      registerForm.get('username')?.touched
+      ) { @if (
+      registerForm.get('username')?.errors?.['required']) {
+      <p class="error">Name is required.</p>
+      }
+      @if (registerForm.get('username')?.errors?.['minlength']) {
+      <p class="error">Name must be at least 4 characters long.</p>
+      }
+      }
 
       <label>
         Email
-        <input type="email" name="email" required [(ngModel)]="email" />
+        <input type="email" name="email" required formControlName="email" />
       </label>
+
+      @if (registerForm.get('email')?.invalid && registerForm.get('email')?.touched) {
+      <p class="error">Email is not valid.</p>
+      }
+
+      <ng-container formGroupName="passwords">
         <label>
           Telephone
-          <input type="tel" name="telephone" required [(ngModel)]="telephone" />
+          <input type="tel" name="telephone" required formControlName="telephone" />
         </label>
 
 
-      <label>
-        Password
-        <input type="password" name="password" required minlength="6" [(ngModel)]="password" />
-      </label>
+        <label>
+          Password
+          <input type="password" name="password" required minlength="6" formControlName="password"
+            [class.error]="passwordsGroup.invalid && passwordsGroup.touched" />
+        </label>
+        @if (passwordsGroup.get('password')?.invalid && passwordsGroup.get('password')?.touched) {
+        <p class="error">Password must be at least 5 characters long.</p>
+        }
+        <label>
+          Confirm Password
+          <input type="password" name="rePassword" required minlength="6" formControlName="rePassword"
+            [class.error]="passwordsGroup.invalid && passwordsGroup.touched" />
+        </label>
+        @if (passwordsGroup.touched && passwordsGroup.errors?.['passwordsMismatch']) {
+        <p class="error">Passwords do not match.</p>
+        }
+      </ng-container>
 
-      <label>
-        Confirm Password
-        <input type="password" name="rePassword" required minlength="6" [(ngModel)]="rePassword" />
-      </label>
+      @if (registerForm.invalid && registerForm.touched) {
+      <p class="error">Please fill in all required fields correctly.</p>
+      }
+      @if (errMessage) {
+      <p class="error">{{ errMessage }}</p>
+      }
 
-      <button class="btn-primary full" type="submit">
-        Create account
+      <button class="btn-primary full" type="submit" [disabled]="registerForm.invalid ||isLoading">
+        {{ isLoading ? 'Registering...' : 'Register' }}
       </button>
 
       <p class="auth-switch">
