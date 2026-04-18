@@ -4,39 +4,42 @@
 
         <h1 class="title">Add New Movie</h1>
 
-        <form appInputError #movieForm="ngForm" (ngSubmit)="onSubmit()">
+        <form #movieForm="ngForm" (ngSubmit)="onSubmit()">
 
             <div class="form-group">
                 <label for="movieName">Movie Name</label>
-                <input appInputError id="movieName" type="text" [(ngModel)]="movieName" placeholder="Enter movie name..." required
-                    minlength="5" #movieNameInput="ngModel" [class.input-error]="movieNameInput.invalid && movieNameInput.touched"/>
+                <input appInputError id="movieName" type="text" [(ngModel)]="movieName"
+                    placeholder="Enter movie name..." required minlength="5" #movieNameInput="ngModel"
+                    [class.input-error]="movieNameInput.invalid && movieNameInput.touched" />
             </div>
 
             @if (movieNameInput.touched && movieNameInput.errors?.['required']) {
-                <div class="error-message">
-                    Movie name is required and must be at least 5 characters long.
-                </div>
+            <div class="error-message">
+                Movie name is required and must be at least 5 characters long.
+            </div>
             }
             @if (movieNameInput.touched && movieNameInput.errors?.['minlength']) {
-                <div class="error-message">
-                    Movie name must be at least 5 characters long.
-                </div>
+            <div class="error-message">
+                Movie name must be at least 5 characters long.
+            </div>
             }
 
             <div class="form-group">
                 <label for="imageUrl">Image URL</label>
-                <input appInputErrorid="imageUrl" type="text" [(ngModel)]="imageUrl" placeholder="https://example.com/poster.jpg" />
+                <input appInputErrorid="imageUrl" type="text" [(ngModel)]="imageUrl"
+                    placeholder="https://example.com/poster.jpg" />
             </div>
 
             <div class="form-group">
                 <label for="subscribers">Subscribers</label>
-                <input appInputError id="subscribers" type="text" [(ngModel)]="subscribers" placeholder="Enter subscriber names..." />
+                <input appInputError id="subscribers" type="text" [(ngModel)]="subscribers"
+                    placeholder="Enter subscriber names..." />
             </div>
 
             @if (errorMessage) {
-                <div class="error-message">
-                    {{ errorMessage }}
-                </div>
+            <div class="error-message">
+                {{ errorMessage }}
+            </div>
             }
 
             <div class="actions">

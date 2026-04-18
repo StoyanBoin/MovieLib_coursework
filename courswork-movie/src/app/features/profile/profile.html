@@ -1,37 +1,62 @@
 <section class="profile-wrapper">
-@if (user()) {
+  @if (user()) {
   <div class="profile-card">
 
     <div class="avatar">
-        <img src="https://via.placeholder.com/150" alt="        Avatar" />
+      <img src="https://via.placeholder.com/150" alt="        Avatar" />
     </div>
 
+    @if (!isEditing()) {
     <h2 class="username">Username: {{ user()?.username }} </h2>
     <p class="email">Email: {{ user()?.email }}</p>
     <p class="telephone">Telephone: {{ user()?.telephone || 'No telephone available.' }}</p>
 
-
-    <!-- <div class="stats">
-      <div class="stat-box">
-        <span class="number">{{ user()?.moviesCount || 0 }}</span>
-        <span class="label">Movies</span>
-      </div>
-
-      <div class="stat-box">
-        <span class="number">{{ user()?.subscribersCount || 0 }}</span>
-        <span class="label">Subscribers</span>
-      </div>
-
-      <div class="stat-box">
-        <span class="number">{{ user()?.favoritesCount || 0 }}</span>
-        <span class="label">Favorites</span>
-      </div>
-    </div> -->
-
-    <button class="btn-primary" >
+    <button class="btn-primary" (click)="toggleEdit()">
       Edit Profile
     </button>
+    } @else {
+      <form #profileForm="ngForm">
+        <label>
+          Username
+          <input appInputError type="text" name="username" required minlength="4" [(ngModel)]="editUsername" #usernameInput="ngModel" [class.input-error]="usernameInput.invalid && usernameInput.touched" />
+        </label>
+        @if (usernameInput.touched && usernameInput.errors?.['required']) {
+        <p class="error">Username is required and must be at least 4 characters long.</p>
+        }
+        @if (usernameInput.touched && usernameInput.errors?.['minlength']) {
+        <p class="error">Username must be at least 4 characters long.</p>
+        }
+        <label>
+          Email
+          <input appInputError appEmailValidater type="email" name="email" required [(ngModel)]="editEmail" #emailInput="ngModel" [class.input-error]="emailInput.invalid && emailInput.touched" />
+        </label>
+        @if (emailInput.touched && emailInput.errors?.['required']) {
+        <p class="error">Email is required.</p>
+        }
+        @if (emailInput.touched && emailInput.errors?.['email']) {
+        <p class="error">Please enter a valid email address.</p>
+        }
+        <label>
+          Telephone
+          <input appInputError type="tel" name="telephone" [(ngModel)]="editTelephone" />
+        </label>
 
+        @if (errorMessage()) {
+        <p class="error">{{ errorMessage() }}</p>
+        }
+
+        <div class="actions">
+          <button class="btn-primary" type="button" (click)="onSave()" [disabled]="profileForm.invalid || isLoading()">
+            {{ isLoading() ? 'Saving...' : 'Save' }}
+          </button>
+          <button class="btn-secondary" type="button" (click)="onCancel()" [disabled]="isLoading()">
+            Cancel
+          </button>
+        </div>
+      </form>
+    }
   </div>
-}
+  }@else {
+    <p class="not-logged-in">You need to be logged in to view your profile.</p>
+  }
 </section>
