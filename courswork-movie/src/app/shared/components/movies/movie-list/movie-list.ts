@@ -15,7 +15,7 @@ export class MovieList implements OnInit {
   constructor(private apiService: Api){}
 
   ngOnInit(): void{
-    this.apiService.getMovie().subscribe((m) => {
+    this.apiService.getMovies().subscribe((m) => {
       this.movie = m.sort(
         (a, b) => b.subscribers.length - a.subscribers.length
       )

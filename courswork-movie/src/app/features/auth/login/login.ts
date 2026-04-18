@@ -38,6 +38,8 @@ export class Login {
     this.authService.login({ email, password }).subscribe({
       next: (user) => {
         this.isLoading = false;
+        this.authService.setSession(user);
+        this.router.navigate(['/']);
         if (user) {
           this.router.navigate(['/']);
         } else {

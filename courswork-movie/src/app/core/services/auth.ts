@@ -1,5 +1,4 @@
 import { Injectable, inject, signal, computed } from '@angular/core';
-import { UserService } from './user';
 import { User, LoginCredentials, UserForAuth, ProfileUpdate } from '../../shared/interfaces/user';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
@@ -40,7 +39,7 @@ export class AuthService {
     this.user.set(user);
   }
   
-  clearSession(user: User): void {
+  clearSession(): void {
     this.user.set(null);
   }
 }

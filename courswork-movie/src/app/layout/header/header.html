@@ -1,13 +1,13 @@
 <header class="app-header">
   <div class="logo">
-     <a routerLink="/">MovieLib</a>
+    <a routerLink="/">MovieLib</a>
   </div>
 
   <nav class="nav">
     <a routerLink="/" routerLinkActive="active">Home</a>
     <a routerLink="/movies" routerLinkActive="active">Movies</a>
     @if (isLoggedIn()) {
-    <a routerLink="/new-movie" routerLinkActive="active">Add Movie</a>  
+    <a routerLink="/new-movie" routerLinkActive="active">Add Movie</a>
     }
     <a routerLink="/blog" routerLinkActive="active">Blog</a>
     <a routerLink="/favorites" routerLinkActive="active">Favorites</a>
@@ -20,7 +20,7 @@
   }
   @if (isLoggedIn()) {
   <div class="auth-links">
-    <a routerLink="/profile" class="btn-profile">{{ getUser()?.username }}'s profile</a>
+    <a routerLink="/profile" class="btn-profile">{{ username() }}'s profile</a>
     <button (click)="onLogout()" class="btn-secondary">Logout</button>
   </div>
   }
