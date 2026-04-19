@@ -1,33 +1,14 @@
 <section class="page-header">
     <h1>Movies</h1>
     <p>Browse and filter through the movie collection.</p>
-</section>
-
-<!-- <section class="movie-filters">
-    <input type="text"
-           placeholder="Search by title..." />
+  </section>
   
-    <select >
-      <option value="popular">Most popular</option>
-      <option value="rating">Highest rated</option>
-      <option value="recent">Most recent</option>
-    </select>
-  </section> -->
-
-
-<section class="movie-grid">
-    <app-movie-item *ngFor="let movie of movies" [movie]="movie"></app-movie-item>
-    <a class="movie-card">
-        <div class="poster-wrapper">
-            <div class="poster-skeleton"></div>
-            <img />
-            <span class="movie-rating"></span>
-        </div>
-        <div class="movie-info">
-            <h3></h3>
-            <span class="movie-year"></span>
-        </div>
-    </a>
-
-
-</section>
+  <section class="movie-grid">
+    @for (movie of movies; track movie._id) {
+      <app-movie-item [movie]="movie"/>
+    }
+    @if (movies.length === 0) {
+      <p class="no-movies">No movies available.</p>
+    }
+  </section>
+  

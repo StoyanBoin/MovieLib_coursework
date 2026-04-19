@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { Post } from '../../interfaces/post';
+import { Post } from '../../../interfaces/post';
 
 @Component({
   selector: 'app-post-item',
@@ -7,6 +7,6 @@ import { Post } from '../../interfaces/post';
   templateUrl: './post-item.html',
   styleUrl: './post-item.css',
 })
-export class PostItem {
-  @Input({ required: true }) post!: Post
+export class PostItem  {
+  @Input({ required: true }) post!: Post;
 }

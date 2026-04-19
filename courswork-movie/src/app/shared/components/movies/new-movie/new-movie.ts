@@ -16,6 +16,7 @@ export class NewMovie {
 
   movieName = '';
   imageUrl = '';
+  year: '' = '';
   subscribers: '' = '';
   postText = '';
   isLoading = false;
@@ -34,6 +35,7 @@ export class NewMovie {
     this.apiService.createMovie({
       movieName: this.movieName,
       imageUrl: this.imageUrl,
+      year: Number(this.year),
       postText: this.postText,
       subscribers: this.subscribers,
     }).subscribe({

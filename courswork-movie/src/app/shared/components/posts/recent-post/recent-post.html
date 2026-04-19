@@ -1,0 +1,13 @@
+<section class="posts-wrapper">
+
+  <h1 class="title">Posts</h1>
+    <div class="posts-list">
+        @for (post of posts; track post._id) {
+            <app-post-item [post]="post"/>
+        }   
+    </div>
+  <ng-template #noPosts>
+    <p class="no-posts">No posts available.</p>
+  </ng-template>
+
+</section>

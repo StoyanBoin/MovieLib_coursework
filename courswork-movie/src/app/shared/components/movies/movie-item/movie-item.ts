@@ -8,5 +8,5 @@ import { Movie } from '../../../interfaces/movie';
   styleUrl: './movie-item.css',
 })
 export class MovieItem {
-  @Input({ required: true }) movie!: Movie
+  @Input({ required: true }) movie!: Movie;
 }

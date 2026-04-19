@@ -1,1 +1,13 @@
-<p>movie-item works!</p>
+<section class="movie-grid">
+    <a class="movie-card" >
+        <div class="poster-wrapper">
+            <div class="poster-skeleton"></div>
+            <img [src]="movie.imageUrl" [alt]="movie.movieName" />
+            <span class="movie-rating">{{ movie.subscribers }}</span>
+        </div>
+        <div class="movie-info">
+            <h3>{{ movie.movieName }}</h3>
+            <span class="movie-year">{{ movie.year }}</span>
+        </div>
+    </a>
+</section>
