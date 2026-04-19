@@ -15,6 +15,5 @@ export interface CreateMovie {
     movieName: string,
     imageUrl: string,
     year: number,
-    postText: string,
     subscribers: string,
 }

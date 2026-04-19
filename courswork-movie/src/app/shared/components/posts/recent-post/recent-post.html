@@ -6,8 +6,8 @@
             <app-post-item [post]="post"/>
         }   
     </div>
-  <ng-template #noPosts>
-    <p class="no-posts">No posts available.</p>
-  </ng-template>
+    @if (!posts || posts.length === 0) {
+      <p class="no-posts">No posts available.</p>
+    }
 
 </section>

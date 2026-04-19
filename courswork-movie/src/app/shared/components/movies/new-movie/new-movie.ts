@@ -18,7 +18,6 @@ export class NewMovie {
   imageUrl = '';
   year: '' = '';
   subscribers: '' = '';
-  postText = '';
   isLoading = false;
 
   private router = inject(Router);
@@ -36,7 +35,6 @@ export class NewMovie {
       movieName: this.movieName,
       imageUrl: this.imageUrl,
       year: Number(this.year),
-      postText: this.postText,
       subscribers: this.subscribers,
     }).subscribe({
       next: (movie) => {
