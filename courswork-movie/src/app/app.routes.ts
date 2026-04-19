@@ -1,26 +1,15 @@
 import { Routes } from '@angular/router';
-import { Home } from './features/home/home';
-import { Movies } from './shared/components/movies/movies';
-import { NewMovie } from './shared/components/movies/new-movie/new-movie';
-import { Blog } from './shared/components/blog/blog';
-import { Favorites } from './shared/components/favorites/favorites';
 import { authGuard } from './core/guards/auth.guard';
-import { Profile } from './features/profile/profile';
-
-import { Login } from './features/auth/login/login';
-import { Register } from './features/auth/register/register';
-import { NotFound } from './features/not-found/not-found';
 
 export const routes: Routes = [
     { path: '', redirectTo: 'home', pathMatch: 'full' },
-    { path: 'home', component: Home },
-    { path: 'movies', component: Movies },
-    { path: 'new-movie', component: NewMovie, canActivate: [authGuard] },
-    { path: 'blog', component: Blog },
-    { path: 'favorites', component: Favorites, canActivate: [authGuard] },
-    { path: 'profile', component: Profile },
+    { path: 'home', loadComponent: () => import('./features/home/home').then(m => m.Home) },
+    { path: 'movies', loadComponent: () => import('./shared/components/movies/movies').then(m => m.Movies) },
+    { path: 'new-movie', loadComponent: () => import('./shared/components/movies/new-movie/new-movie').then(m => m.NewMovie), canActivate: [authGuard] },
+    { path: 'favorites', loadComponent: () => import('./shared/components/favorites/favorites').then(m => m.Favorites), canActivate: [authGuard] },
+    { path: 'profile', loadComponent: () => import('./features/profile/profile').then(m => m.Profile), canActivate: [authGuard] },
 
-    { path: 'login', component: Login },
-    { path: 'register', component: Register },
-    { path: '**', component: NotFound}
+    { path: 'login', loadComponent: () => import('./features/auth/login/login').then(m => m.Login) },
+    { path: 'register', loadComponent: () => import('./features/auth/register/register').then(m => m.Register) },
+    { path: '**', loadComponent: () => import('./features/not-found/not-found').then(m => m.NotFound) },
 ];

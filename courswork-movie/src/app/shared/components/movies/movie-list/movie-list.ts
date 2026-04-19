@@ -1,11 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { Api } from '../../../../core/services/api';
 import { Movie } from '../../../interfaces/movie';
+import { MovieItem } from '../movie-item/movie-item';
+import { RouterLink } from '@angular/router';
 
 
 @Component({
   selector: 'app-movie-list',
-  imports: [],
+  imports: [MovieItem, RouterLink],
   templateUrl: './movie-list.html',
   styleUrl: './movie-list.css',
 })
