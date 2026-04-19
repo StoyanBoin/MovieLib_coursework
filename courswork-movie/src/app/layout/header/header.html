@@ -20,7 +20,7 @@
   }
   @else {
   <div class="auth-links">
-    <a routerLink="/profile" class="btn-profile">{{ username() }}'s profile</a>
+    <a routerLink="/profile" class="btn-profile">{{ user()?.username }}'s profile</a>
     <button (click)="onLogout()" class="btn-secondary">Logout</button>
   </div>
   }

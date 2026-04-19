@@ -5,7 +5,7 @@ export interface Post {
         username: string;
     }
     movieId: {
-        movieName: string;
+        themeName: string;
     }
     created_at: string;
 }

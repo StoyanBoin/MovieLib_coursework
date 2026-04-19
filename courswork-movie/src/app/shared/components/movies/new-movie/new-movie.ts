@@ -7,14 +7,14 @@ import { NotificationService } from '../../../../core/services/notification';
 
 @Component({
   selector: 'app-new-movie',
-  imports: [ FormsModule, InputError ],
+  imports: [FormsModule, InputError],
   templateUrl: './new-movie.html',
   styleUrl: './new-movie.css',
 })
 export class NewMovie {
   @ViewChild('movieForm') movieForm!: NgForm;
 
-  movieName = '';
+  themeName = '';
   // imageUrl = '';
   // year = '';
   postText = '';
@@ -33,9 +33,8 @@ export class NewMovie {
     this.isLoading = true;
 
     this.apiService.createMovie({
-      themeName: this.movieName, 
+      themeName: this.themeName,
       subscribers: this.subscribers,
-      postText: this.postText
     }).subscribe({
       next: (movie) => {
         this.isLoading = false;

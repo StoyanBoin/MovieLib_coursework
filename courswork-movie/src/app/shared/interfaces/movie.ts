@@ -1,9 +1,9 @@
 export interface Movie {
     _id: string,
-    movieName: string,
-    imageUrl: string,
-    year: string,
-    postText: string,
+    themeName: string,
+    // imageUrl: string,
+    // year: string,
+    // postText: string,
     created_at: string,
     userId: {
         username: string;
@@ -13,6 +13,6 @@ export interface Movie {
 
 export interface CreateMovie {
     themeName: string,
+    // postText: string,
     subscribers: string,
-    postText: string,
 }
