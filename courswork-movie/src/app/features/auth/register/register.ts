@@ -51,7 +51,7 @@ export class Register {
     const userData = {
       username,
       email,
-      telephone: telephone ? '+359' + telephone : undefined,
+      telephone: telephone ? '+359' + telephone : '',
       password: passwords.password,
     };
 
