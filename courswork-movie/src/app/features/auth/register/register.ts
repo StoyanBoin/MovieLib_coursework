@@ -7,8 +7,6 @@ import { emailValidator } from '../../../shared/validators/email.validater';
 import { passwordsValidator } from '../../../shared/validators/passwords.validater';
 import { NotificationService } from '../../../core/services/notification';
 
-
-
 @Component({
   selector: 'app-register',
   imports: [FormsModule, ReactiveFormsModule, RouterLink],
@@ -24,7 +22,7 @@ export class Register {
   registerForm: FormGroup = this.fb.group({
     username: ['', Validators.required, Validators.minLength(4)],
     email: ['', Validators.required, emailValidator()],
-    telephone: [''],
+    tel: [''],
     passwords: this.fb.group({
       password: ['', [Validators.required, Validators.minLength(6)]],
       rePassword: ['', [Validators.required]],
@@ -45,12 +43,12 @@ export class Register {
 
     this.isLoading = true;
     
-    const { username, email, telephone, passwords } = this.registerForm.value;
+    const { username, email, tel, passwords } = this.registerForm.value;
 
     const userData = {
       username,
       email,
-      telephone: telephone ? "+359" + telephone : "undefined",
+      tel: tel ? "+359" + tel : "undefined",
       password: passwords.password,
     };
 

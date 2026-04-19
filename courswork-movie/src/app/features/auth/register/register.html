@@ -30,12 +30,13 @@
       <p class="error">Email is not valid.</p>
       }
 
-      <ng-container formGroupName="passwords">
-        <!-- <label>
-          Telephone
-          <input type="tel" name="telephone" formControlName="telephone" />
-        </label> -->
 
+      <label>
+        Telephone
+        <input type="tel" name="tel" formControlName="tel" />
+      </label>
+
+      <ng-container formGroupName="passwords">
         <label>
           Password
           <input type="password" name="password" required minlength="6" formControlName="password"
