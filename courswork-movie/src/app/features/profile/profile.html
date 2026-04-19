@@ -16,7 +16,7 @@
     </button>
     } @else {
       <form #profileForm="ngForm">
-        <label>
+        <label class="username">
           Username
           <input appInputError type="text" name="username" required minlength="4" [(ngModel)]="editUsername" #usernameInput="ngModel" [class.input-error]="usernameInput.invalid && usernameInput.touched" />
         </label>
@@ -26,7 +26,7 @@
         @if (usernameInput.touched && usernameInput.errors?.['minlength']) {
         <p class="error">Username must be at least 4 characters long.</p>
         }
-        <label>
+        <label class="email">
           Email
           <input appInputError appEmailValidater type="email" name="email" required [(ngModel)]="editEmail" #emailInput="ngModel" [class.input-error]="emailInput.invalid && emailInput.touched" />
         </label>
