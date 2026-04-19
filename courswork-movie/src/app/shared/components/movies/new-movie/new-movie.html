@@ -8,7 +8,7 @@
 
             <div class="form-group">
                 <label for="movieName">Movie Name</label>
-                <input appInputError id="movieName" type="text" [(ngModel)]="movieName"
+                <input appInputError id="movieName" type="text" [(ngModel)]="movieName" name="movieName"
                     placeholder="Enter movie name..." required minlength="5" #movieNameInput="ngModel"
                     [class.input-error]="movieNameInput.invalid && movieNameInput.touched" />
             </div>

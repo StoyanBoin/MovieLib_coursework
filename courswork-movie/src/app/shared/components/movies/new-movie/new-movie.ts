@@ -17,6 +17,7 @@ export class NewMovie {
   movieName = '';
   // imageUrl = '';
   // year = '';
+  postText = '';
   subscribers = '';
   isLoading = false;
 
@@ -34,11 +35,12 @@ export class NewMovie {
     this.apiService.createMovie({
       themeName: this.movieName, 
       subscribers: this.subscribers,
+      postText: this.postText
     }).subscribe({
       next: (movie) => {
         this.isLoading = false;
         this.notificationService.showSuccess('Movie created successfully!');
-        this.router.navigate(['/movies', movie._id]);
+        this.router.navigate(['/movies']);
       },
       error: (err) => {
         this.isLoading = false;

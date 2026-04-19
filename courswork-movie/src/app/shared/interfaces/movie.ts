@@ -14,4 +14,5 @@ export interface Movie {
 export interface CreateMovie {
     themeName: string,
     subscribers: string,
+    postText: string,
 }
