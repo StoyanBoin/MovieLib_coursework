@@ -12,8 +12,6 @@ export interface Movie {
 }
 
 export interface CreateMovie {
-    movieName: string,
-    // imageUrl: string,
-    // year: string,
+    themeName: string,
     subscribers: string,
 }

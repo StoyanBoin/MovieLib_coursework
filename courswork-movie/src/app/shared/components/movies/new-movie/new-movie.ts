@@ -32,7 +32,7 @@ export class NewMovie {
     this.isLoading = true;
 
     this.apiService.createMovie({
-      movieName: this.movieName, 
+      themeName: this.movieName, 
       subscribers: this.subscribers,
     }).subscribe({
       next: (movie) => {
