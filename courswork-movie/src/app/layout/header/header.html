@@ -18,7 +18,7 @@
     <a routerLink="/register" class="btn-primary">Register</a>
   </div>
   }
-  @if (isLoggedIn()) {
+  @else {
   <div class="auth-links">
     <a routerLink="/profile" class="btn-profile">{{ username() }}'s profile</a>
     <button (click)="onLogout()" class="btn-secondary">Logout</button>

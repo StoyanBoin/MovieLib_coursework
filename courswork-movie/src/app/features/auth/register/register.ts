@@ -1,6 +1,5 @@
 import { Component, inject } from '@angular/core';
 import { FormBuilder, FormGroup, FormsModule, Validators } from '@angular/forms';
-import { UserService } from '../../../core/services/user';
 import { AuthService } from '../../../core/services/auth';
 import { Router, RouterLink } from '@angular/router';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -51,7 +50,7 @@ export class Register {
     const userData = {
       username,
       email,
-      telephone: telephone ? '+359' + telephone : '',
+      telephone: telephone ? "+359" + telephone : "undefined",
       password: passwords.password,
     };
 

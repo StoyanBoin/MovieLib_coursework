@@ -16,7 +16,8 @@ export class Header {
   private router = inject(Router);
 
   isLoggedIn = this.authService.isLoggedIn;
-  username = computed(() => {this.authService.currentUser()?.username ?? ''});
+  username = computed(() => {this.authService.currentUser()?.username});
+  email = computed(() => {this.authService.currentUser()?.email ?? ''})
   notification = this.notificationService.notification;
 
   onLogout(): void {

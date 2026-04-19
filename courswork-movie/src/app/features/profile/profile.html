@@ -9,7 +9,7 @@
     @if (!isEditing()) {
     <h2 class="username">Username: {{ user()?.username }} </h2>
     <p class="email">Email: {{ user()?.email }}</p>
-    <p class="telephone">Telephone: {{ user()?.telephone || 'No telephone available.' }}</p>
+    <!-- <p class="telephone">Telephone: {{ user()?.telephone || 'No telephone available.' }}</p> -->
 
     <button class="btn-primary" (click)="toggleEdit()">
       Edit Profile
@@ -36,10 +36,10 @@
         @if (emailInput.touched && emailInput.errors?.['email']) {
         <p class="error">Please enter a valid email address.</p>
         }
-        <label>
+        <!-- <label>
           Telephone
           <input appInputError type="tel" name="telephone" [(ngModel)]="editTelephone" />
-        </label>
+        </label> -->
 
 
         <div class="actions">

@@ -15,9 +15,9 @@ export class NewMovie {
   @ViewChild('movieForm') movieForm!: NgForm;
 
   movieName = '';
-  imageUrl = '';
-  year: '' = '';
-  subscribers: '' = '';
+  // imageUrl = '';
+  // year = '';
+  subscribers = '';
   isLoading = false;
 
   private router = inject(Router);
@@ -32,9 +32,7 @@ export class NewMovie {
     this.isLoading = true;
 
     this.apiService.createMovie({
-      movieName: this.movieName,
-      imageUrl: this.imageUrl,
-      year: Number(this.year),
+      movieName: this.movieName, 
       subscribers: this.subscribers,
     }).subscribe({
       next: (movie) => {

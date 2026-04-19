@@ -6,7 +6,7 @@
     <form [formGroup]="registerForm" (ngSubmit)="onRegister()">
       <label>
         Name
-        <input type="text" name="name" required formControlName="username" />
+        <input type="text" name="name" formControlName="username" />
       </label>
 
       @if (
@@ -23,7 +23,7 @@
 
       <label>
         Email
-        <input type="email" name="email" required formControlName="email" />
+        <input type="email" name="email" formControlName="email" />
       </label>
 
       @if (registerForm.get('email')?.invalid && registerForm.get('email')?.touched) {
@@ -31,10 +31,10 @@
       }
 
       <ng-container formGroupName="passwords">
-        <label>
+        <!-- <label>
           Telephone
           <input type="tel" name="telephone" formControlName="telephone" />
-        </label>
+        </label> -->
 
         <label>
           Password

@@ -24,7 +24,7 @@ export class Profile implements OnInit {
 
   editUsername = '';
   editEmail = ''
-  editTelephone = '';
+  // editTelephone = '';
 
   ngOnInit(): void {
     if (!this.user()) {
@@ -40,7 +40,7 @@ export class Profile implements OnInit {
     if (currentUser) {
       this.editUsername = currentUser.username;
       this.editEmail = currentUser.email;
-      this.editTelephone = currentUser.telephone ? currentUser.telephone.replace('+359', '') : '';
+      // this.editTelephone = currentUser.telephone?.replace('+359', '') || '';
     }
     this.isEditing.set(true);
   }
@@ -59,7 +59,7 @@ export class Profile implements OnInit {
     const updatedData = {
       username: this.editUsername,
       email: this.editEmail,
-      telephone: this.editTelephone ? '+359' + this.editTelephone : '',
+      // telephone: this.editTelephone ? '+359' + this.editTelephone : undefined,
     }
 
     this.authService.updateProfile(updatedData).subscribe({
