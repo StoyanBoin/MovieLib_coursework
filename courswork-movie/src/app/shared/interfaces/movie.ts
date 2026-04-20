@@ -6,6 +6,7 @@ export interface Movie {
         username: string;
     }
     subscribers: string[];
+    posts: string[];
 }
 
 export interface CreateMovie {

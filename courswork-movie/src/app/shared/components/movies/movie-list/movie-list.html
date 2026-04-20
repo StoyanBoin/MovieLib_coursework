@@ -1,10 +1,15 @@
-  
-  <section class="movie-grid">
-    @for (movie of movies; track movie._id) {
-      <app-movie-item [movie]="movie"/>
-    }
-    @if (movies.length === 0) {
-      <p class="no-movies">No movies available.</p>
-    }
-  </section>
-  
+@if (isLoading) {
+<p class="movie-state-message">Loading movies...</p>
+} @else if (errorMessage) {
+<p class="movie-state-message">{{ errorMessage }}</p>
+} @else {
+<section class="movie-grid">
+  @for (movie of movies; track movie._id) {
+  <app-movie-item [movie]="movie" />
+  }
+
+  @if (movies.length === 0) {
+  <p class="movie-state-message">No movies available.</p>
+  }
+</section>
+}
