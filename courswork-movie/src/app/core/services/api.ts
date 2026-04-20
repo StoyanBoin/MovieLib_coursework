@@ -16,8 +16,8 @@ export class Api {
     return this.http.get<Movie[]>(`${this.apiUrl}/themes`)
   }
 
-  getMovie(movieId: string): Observable<Movie[]> {
-    return this.http.get<Movie[]>(`${this.apiUrl}/themes/${movieId}`)
+  getMovie(themeId: string): Observable<Movie[]> {
+    return this.http.get<Movie[]>(`${this.apiUrl}/themes/${themeId}`)
   }
 
   createMovie(movieData: CreateMovie): Observable<Movie> {
@@ -28,8 +28,8 @@ export class Api {
     return this.http.get<Post[]>(`${this.apiUrl}/posts?limit=5`)
   }
 
-  subscribeToMovie(movieId: string): Observable<Movie> {
-    return this.http.put<Movie>(`${this.apiUrl}/themes/${movieId}`, {}, { withCredentials: true })
+  subscribeToMovie(themeId: string): Observable<Movie> {
+    return this.http.put<Movie>(`${this.apiUrl}/themes/${themeId}`, {}, { withCredentials: true })
   }
 
 }

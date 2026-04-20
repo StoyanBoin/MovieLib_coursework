@@ -45,7 +45,7 @@
             <div class="form-group">
                 <label for="postText">Movie Description</label>
                 <textarea appInputError id="postText" [(ngModel)]="postText" name="postText"
-                    placeholder="Write a short description..." required minlength="10" pattern=".*\\S.*"
+                    placeholder="Write a short description..." required minlength="10" 
                     #postTextInput="ngModel"
                     [class.input-error]="postTextInput.invalid && postTextInput.touched"></textarea>
             </div>
@@ -63,7 +63,7 @@
 
             <div class="actions">
                 <button class="btn-primary" type="submit" [disabled]="movieForm.invalid || isLoading">
-                    {{ isLoading ? 'Adding...' : 'Add Movie' }}
+                    {{ isLoading ? 'Posting...' : 'Add Post' }}
                 </button>
 
                 <button class="btn-cancel" type="button" (click)="onCancel()">

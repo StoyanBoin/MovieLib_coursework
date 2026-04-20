@@ -4,7 +4,8 @@ export interface Post {
     userId: {
         username: string;
     }
-    movieId: {
+    themeId: {
+        _id: string;
         themeName: string;
     }
     created_at: string;

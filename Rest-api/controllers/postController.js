@@ -6,7 +6,6 @@ function newPost(text, userId, themeId) {
             return Promise.all([
                 userModel.updateOne({ _id: userId }, { $push: { posts: post._id }, $addToSet: { themes: themeId } }),
                 themeModel.findByIdAndUpdate({ _id: themeId }, { $push: { posts: post._id }, $addToSet: { subscribers: userId } }, { new: true }),
-                movieModel.findOneAndUpdate({ _id: themeId }, { $push: { posts: post._id }, $addToSet: { subscribers: userId } }, { new: true }),
             ])
         })
 }

@@ -15,8 +15,6 @@ export class NewMovie {
   @ViewChild('movieForm') movieForm!: NgForm;
 
   themeName = '';
-  // imageUrl = '';
-  // year = '';
   postText = '';
   isLoading = false;
 
@@ -35,10 +33,10 @@ export class NewMovie {
       themeName: this.themeName,
       postText: this.postText,
     }).subscribe({
-      next: (movie) => {
+      next: (theme) => {
         this.isLoading = false;
         this.notificationService.showSuccess('Movie created successfully!');
-        this.router.navigate(['/movies', movie._id]);
+        this.router.navigate(['/movies', theme._id]);
       },
       error: (err) => {
         this.isLoading = false;
