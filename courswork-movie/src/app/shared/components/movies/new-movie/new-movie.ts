@@ -18,7 +18,6 @@ export class NewMovie {
   // imageUrl = '';
   // year = '';
   postText = '';
-  subscribers = '';
   isLoading = false;
 
   private router = inject(Router);
@@ -34,12 +33,12 @@ export class NewMovie {
 
     this.apiService.createMovie({
       themeName: this.themeName,
-      subscribers: this.subscribers,
+      postText: this.postText,
     }).subscribe({
       next: (movie) => {
         this.isLoading = false;
         this.notificationService.showSuccess('Movie created successfully!');
-        this.router.navigate(['/movies']);
+        this.router.navigate(['/movies', movie._id]);
       },
       error: (err) => {
         this.isLoading = false;

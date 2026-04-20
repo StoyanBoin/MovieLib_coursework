@@ -8,4 +8,5 @@ export interface Post {
         themeName: string;
     }
     created_at: string;
+    likes?: string[];
 }
