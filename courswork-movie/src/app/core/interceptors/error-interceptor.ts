@@ -1,6 +1,6 @@
 import { HttpErrorResponse, HttpInterceptorFn } from '@angular/common/http';
 import { NotificationService } from '../services/notification';
-import { inject } from '@angular/core/primitives/di';
+import { inject } from '@angular/core';
 import { AuthService } from '../services/auth';
 import { Router } from '@angular/router';
 import { catchError } from 'rxjs/internal/operators/catchError';

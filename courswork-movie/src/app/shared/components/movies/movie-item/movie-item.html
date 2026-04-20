@@ -6,8 +6,10 @@
         </div>
         <div class="poster-wrapper">
             <div class="poster-skeleton"></div>
-            <!-- <img [src]="movie.imageUrl" [alt]="movie.themeName" /> -->
-            <span class="movie-subscribers">Subscribers: {{ movie.created_at }}</span>
+            <span class="movie-subscribers">Subscribers: {{ movie.userId.username }}</span>
+        </div>
+        <div>
+            <span class="movie-subscribers">Date: {{ movie.created_at }}</span>
         </div>
     </a>
 </section>

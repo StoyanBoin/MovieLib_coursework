@@ -12,24 +12,14 @@ import { MovieItem } from '../movie-item/movie-item';
 })
 export class MovieList implements OnInit {
   movies: Movie[] = [];
-  isLoading = true;
-  errorMessage = '';
 
   constructor(private apiService: Api){}
 
   ngOnInit(): void{
-    this.apiService.getMovies().subscribe({
-      next: (movies) => {
-        const movieList = Array.isArray(movies) ? movies : [];
-        this.movies = movieList.sort(
-          (a, b) => b.subscribers.length - a.subscribers.length
-        );
-        this.isLoading = false;
-      },
-      error: () => {
-        this.errorMessage = 'Unable to load movies right now. Please try again.';
-        this.isLoading = false;
-      }
-    });
+    this.apiService.getMovies().subscribe((m) => {
+      this.movies = m.sort(
+        (a, b) => b.subscribers.length - a.subscribers.length
+      );
+    })
   }
 }

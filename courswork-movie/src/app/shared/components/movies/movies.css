@@ -1,234 +1,58 @@
-/* ============================================
-   TWO-COLUMN PAGE LAYOUT (MOVIES LEFT / POSTS RIGHT)
-   ============================================ */
+/* ===== PAGE HEADER ===== */
+.page-header {
+  text-align: center;
+  padding: 40px 20px;
+  margin-bottom: 30px;
+}
 
+.page-header h1 {
+  font-size: 3rem;
+  font-weight: 700;
+  color: #00eaff;
+  margin-bottom: 10px;
+}
+
+.page-header p {
+  font-size: 1.2rem;
+  color: #ccc;
+}
+
+
+/* ===== PAGE WRAPPER (2 COLUMNS) ===== */
 .page-wrapper {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 2rem;
-  align-items: start;
+  grid-template-columns: 2fr 1fr; /* Left bigger, right smaller */
+  gap: 30px;
+  padding: 0 20px 40px;
+  max-width: 1400px;
+  margin: 0 auto;
+}
 
-  @media (max-width: 900px) {
+/* LEFT SECTION (MOVIES) */
+.left-section {
+  background: #111;
+  padding: 20px;
+  border-radius: 10px;
+  border: 1px solid #222;
+}
+
+/* RIGHT SECTION (POSTS) */
+.right-section {
+  background: #111;
+  padding: 20px;
+  border-radius: 10px;
+  border: 1px solid #222;
+}
+
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 900px) {
+  .page-wrapper {
     grid-template-columns: 1fr;
   }
-}
 
-/* Left column */
-.left-section {
-  display: flex;
-  flex-direction: column;
-}
-
-/* Right column */
-.right-section {
-  display: flex;
-  flex-direction: column;
-}
-
-/* ============================================
-   PAGE HEADER
-   ============================================ */
-
-.page-header {
-  margin-bottom: 1rem;
-
-  h1 {
-    font-size: 1.6rem;
-    margin-bottom: 0.25rem;
-  }
-
-  p {
-    color: #9ca3af;
-    font-size: 0.9rem;
-  }
-}
-
-/* ============================================
-   SHARED ANIMATIONS & UTILITIES
-   ============================================ */
-
-@keyframes shimmer {
-  0% { background-position: -200% 0; }
-  100% { background-position: 200% 0; }
-}
-
-.card-hover {
-  transition: transform 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease;
-
-  &:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 18px 35px rgba(15, 23, 42, 0.9);
-    border-color: #38bdf8;
-  }
-}
-
-.grid {
-  display: grid;
-  gap: 1rem;
-}
-
-/* ============================================
-   BUTTONS
-   ============================================ */
-
-.btn {
-  padding: 0.4rem 0.75rem;
-  border-radius: 0.5rem;
-  font-size: 0.85rem;
-  cursor: pointer;
-  transition: background 0.15s ease, border-color 0.15s ease;
-}
-
-.btn-primary {
-  background: #0ea5e9;
-  border: 1px solid #38bdf8;
-  color: #fff;
-
-  &:hover {
-    background: #38bdf8;
-  }
-}
-
-.btn-soft {
-  background: #1e293b;
-  border: 1px solid rgba(148, 163, 184, 0.4);
-  color: #e5e7eb;
-
-  &:hover {
-    border-color: #38bdf8;
-    color: #38bdf8;
-  }
-}
-
-/* ============================================
-   MOVIE LIST (LEFT SECTION)
-   ============================================ */
-
-.movie-filters {
-  display: flex;
-  gap: 0.75rem;
-  margin-bottom: 1.25rem;
-  flex-wrap: wrap;
-
-  input,
-  select {
-    background: #020617;
-    border-radius: 999px;
-    border: 1px solid rgba(148, 163, 184, 0.5);
-    padding: 0.45rem 0.9rem;
-    color: #e5e7eb;
-    font-size: 0.9rem;
-    outline: none;
-  }
-
-  input {
-    flex: 1 1 220px;
-  }
-}
-
-.movie-grid {
-  @extend .grid;
-  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-}
-
-.movie-card {
-  background: #020617;
-  border-radius: 0.75rem;
-  overflow: hidden;
-  border: 1px solid rgba(148, 163, 184, 0.3);
-  text-decoration: none;
-  color: inherit;
-  display: flex;
-  flex-direction: column;
-}
-
-.poster-wrapper {
-  position: relative;
-
-  img,
-  .poster-skeleton {
-    width: 100%;
-    height: 220px;
-    object-fit: cover;
-  }
-
-  .poster-skeleton {
-    background: linear-gradient(90deg, #111827, #1f2937, #111827);
-    animation: shimmer 1.4s infinite;
-    background-size: 200% 100%;
-  }
-
-  .movie-rating {
-    position: absolute;
-    bottom: 0.4rem;
-    right: 0.4rem;
-    padding: 0.15rem 0.45rem;
-    border-radius: 999px;
-    background: #020617dd;
-    font-size: 0.75rem;
-    color: #4ade80;
-  }
-}
-
-.movie-info {
-  padding: 0.5rem 0.6rem 0.6rem;
-
-  h3 {
-    font-size: 0.9rem;
-    margin-bottom: 0.15rem;
-  }
-
-  .movie-year {
-    font-size: 0.8rem;
-    color: #9ca3af;
-  }
-}
-
-
-.post-grid {
-  @extend .grid;
-  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-}
-
-.post-card {
-  background: #020617;
-  border-radius: 0.75rem;
-  border: 1px solid rgba(148, 163, 184, 0.3);
-  padding: 1rem;
-  display: flex;
-  flex-direction: column;
-
-  &:hover {
-    border-color: #38bdf8;
-    transform: translateY(-3px);
-  }
-
-  .post-header {
-    margin-bottom: 0.5rem;
-
-    h3 {
-      font-size: 1rem;
-      margin-bottom: 0.25rem;
-    }
-
-    .post-meta {
-      font-size: 0.8rem;
-      color: #9ca3af;
-    }
-  }
-
-  .post-content {
-    font-size: 0.9rem;
-    color: #e5e7eb;
-    margin-bottom: 0.75rem;
-    line-height: 1.35;
-    max-height: 90px;
-    overflow: hidden;
-  }
-
-  .post-actions {
-    margin-top: auto;
-    display: flex;
-    gap: 0.5rem;
+  .left-section,
+  .right-section {
+    padding: 15px;
   }
 }

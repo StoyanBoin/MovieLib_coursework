@@ -1,112 +1,37 @@
+/* ===== POSTS WRAPPER (single item) ===== */
 .posts-wrapper {
+  background: #020617;
+  border-radius: 0.75rem;
+  border: 1px solid rgba(148, 163, 184, 0.3);
+  padding: 1rem 1.2rem;
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
-  padding: 1rem;
+  gap: 0.4rem;
+  color: #e5e7eb;
+  transition: transform 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease;
+  cursor: pointer;
 }
 
-.title {
-  text-align: center;
-  font-size: 1.8rem;
-  color: #38bdf8;
-  margin-bottom: 1rem;
+.posts-wrapper:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 18px 35px rgba(15, 23, 42, 0.9);
+  border-color: #38bdf8;
 }
 
-.no-posts {
-  text-align: center;
-  color: #9ca3af;
-  font-size: 1rem;
-}
 
-.posts-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-  gap: 1.2rem;
-}
-
-.post-card {
-  background: #020617;
-  border: 1px solid rgba(148, 163, 184, 0.3);
-  border-radius: 0.75rem;
-  padding: 1.2rem;
-  transition: 0.2s ease;
-
-  &:hover {
-    border-color: #38bdf8;
-    transform: translateY(-3px);
-  }
-}
-
-.post-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-
-  .post-title {
-    font-size: 1.2rem;
-    margin: 0;
-    color: #e5e7eb;
-  }
-
-  .post-date {
-    font-size: 0.85rem;
-    color: #9ca3af;
-  }
-}
-
-.post-content {
-  margin: 1rem 0;
-  color: #cbd5e1;
+/* ===== TEXT STYLES ===== */
+.posts-wrapper p {
+  margin: 0;
   font-size: 0.95rem;
-  line-height: 1.4;
+  color: #cbd5e1;
 }
 
-.post-meta {
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 1rem;
-
-  span {
-    font-size: 0.85rem;
-    color: #9ca3af;
-
-    strong {
-      color: #e5e7eb;
-    }
-  }
+.posts-wrapper p:first-child {
+  font-weight: 600;
+  color: #38bdf8; /* theme name highlight */
 }
 
-.post-actions {
-  display: flex;
-  gap: 0.6rem;
-
-  .btn-primary {
-    flex: 1;
-    background: #38bdf8;
-    color: #020617;
-    padding: 0.5rem 1rem;
-    border-radius: 999px;
-    font-weight: 600;
-    transition: 0.2s ease;
-    border: none;
-
-    &:hover {
-      background: #0ea5e9;
-    }
-  }
-
-  .btn-soft {
-    flex: 1;
-    background: #1e293b;
-    color: #e5e7eb;
-    padding: 0.5rem 1rem;
-    border-radius: 999px;
-    border: 1px solid rgba(148, 163, 184, 0.3);
-    transition: 0.2s ease;
-
-    &:hover {
-      background: #334155;
-      border-color: #475569;
-    }
-  }
+.posts-wrapper p:last-child {
+  font-size: 0.85rem;
+  color: #94a3b8; /* date subtle */
 }
