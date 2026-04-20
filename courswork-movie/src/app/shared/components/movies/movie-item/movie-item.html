@@ -9,7 +9,7 @@
             <span class="movie-subscribers">Subscribers: {{ movie.userId.username }}</span>
         </div>
         <div>
-            <span class="movie-subscribers">Date: {{ movie.created_at }}</span>
+            <span class="movie-subscribers">Date: {{ movie.created_at | dateFormat}}</span>
         </div>
     </a>
 </section>

@@ -36,7 +36,7 @@ export class NewMovie {
       next: (theme) => {
         this.isLoading = false;
         this.notificationService.showSuccess('Movie created successfully!');
-        this.router.navigate(['/movies', theme._id]);
+        this.router.navigate(['/movies']);
       },
       error: (err) => {
         this.isLoading = false;
