@@ -250,4 +250,91 @@
   .link:hover {
     text-decoration: underline;
   }
-  
+  /* ============================
+   NOTIFICATION CONTAINER
+============================ */
+.notification-container {
+  position: fixed;
+  top: 1.2rem;
+  right: 1.2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  z-index: 9999;
+}
+
+/* ============================
+   NOTIFICATION BASE STYLE
+============================ */
+.notification {
+  min-width: 260px;
+  max-width: 340px;
+  padding: 0.9rem 1.2rem;
+  border-radius: 0.6rem;
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: #e5e7eb;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  animation: fadeIn 0.25s ease, slideUp 0.25s ease;
+  border: 1px solid rgba(148, 163, 184, 0.3);
+  background: #0f172a;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.35);
+}
+
+/* Close button */
+.notification .close-btn {
+  background: transparent;
+  border: none;
+  color: #94a3b8;
+  font-size: 1.2rem;
+  cursor: pointer;
+  padding: 0;
+  margin-left: 0.8rem;
+  transition: 0.2s ease;
+
+  &:hover {
+    color: #e2e8f0;
+  }
+}
+
+/* ============================
+   TYPES
+============================ */
+.notification.success {
+  border-left: 4px solid #22c55e;
+}
+
+.notification.error {
+  border-left: 4px solid #ef4444;
+}
+
+.notification.info {
+  border-left: 4px solid #38bdf8;
+}
+
+.notification.warning {
+  border-left: 4px solid #f59e0b;
+}
+
+/* ============================
+   ANIMATIONS
+============================ */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(10px);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
