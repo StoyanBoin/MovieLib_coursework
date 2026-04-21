@@ -35,13 +35,38 @@
                     </div>
 
                     <div class="content">
+                        @if (editedPostId === post._id) {
+                        <textarea class="edit-textarea" [(ngModel)]="editedPostText" name="editPostText-{{post._id}}"
+                            required minlength="5"></textarea>
+                        } @else {
                         <p>{{ post.text }}</p>
+                        }
                     </div>
                 </div>
 
                 <!-- FOOTER -->
                 <footer class="footer">
                     <p><span>{{ post.likes?.length || 0 }}</span> likes</p>
+                    @if (canManagePost(post)) {
+                    <div class="post-actions">
+                        @if (editedPostId === post._id) {
+                        <button type="button" class="btn-primary btn-small" (click)="onSaveEdit(post._id)"
+                            [disabled]="editedPostText.trim().length < 5">
+                            Save
+                        </button>
+                        <button type="button" class="btn-cancel btn-small" (click)="onCancelEdit()">
+                            Cancel
+                        </button>
+                        } @else {
+                        <button type="button" class="btn-edit btn-small" (click)="onStartEdit(post)">
+                            Edit
+                        </button>
+                        <button type="button" class="btn-delete btn-small" (click)="onDeletePost(post._id)">
+                            Delete
+                        </button>
+                        }
+                    </div>
+                    }
                 </footer>
 
             </div>
@@ -59,7 +84,7 @@
                 <form (ngSubmit)="onPostComment()" #commentForm="ngForm">
 
                     <textarea name="commentText" id="commentText" [(ngModel)]="commentText" required minlength="5"
-                        placeholder="Write your comment...."></textarea>
+                        placeholder="Write your comment..."></textarea>
 
                     <button type="submit" class="btn-primary" [disabled]="commentForm.invalid">
                         Post

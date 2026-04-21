@@ -24,9 +24,11 @@ export class MovieContent implements OnInit {
   posts: Post[] = [];
   commentText = "";
   themeId = "";
+  editedPostId: string | null = null;
+  editedPostText = "";
 
   currentUser = computed(() => this.autService.currentUser()?.username ?? 'Unknow')
-
+  currentUserId = computed(() => this.autService.currentUser()?._id ?? '')
 
   ngOnInit(): void {
     this.themeId = this.route.snapshot.params['themeId']
@@ -60,5 +62,67 @@ export class MovieContent implements OnInit {
       }
     });
   }
+    canManagePost(post: Post): boolean {
+    const postAuthorId = post.userId?._id;
+    const loggedInUserId = this.currentUserId();
 
+    if (!postAuthorId || !loggedInUserId) {
+      return false;
+    }
+
+    return postAuthorId === loggedInUserId;
+  }
+
+  onStartEdit(post: Post): void {
+    this.editedPostId = post._id;
+    this.editedPostText = post.text;
+  }
+
+  onCancelEdit(): void {
+    this.editedPostId = null;
+    this.editedPostText = '';
+  }
+
+  onSaveEdit(postId: string): void {
+    const postText = this.editedPostText.trim();
+
+    if (!postText || !this.themeId) {
+      return;
+    }
+
+    this.apiService.editPost(this.themeId, postId, { postText }).subscribe({
+      next: () => {
+        this.onCancelEdit();
+        this.loadMovieData();
+      },
+      error: (err) => {
+        console.error('Failed to edit post', err);
+      }
+    });
+  }
+
+  onDeletePost(postId: string): void {
+    if (!this.themeId) {
+      return;
+    }
+
+    const isConfirmed = window.confirm('Are you sure you want to delete this post?');
+
+    if (!isConfirmed) {
+      return;
+    }
+
+    this.apiService.deletePost(this.themeId, postId).subscribe({
+      next: () => {
+        if (this.editedPostId === postId) {
+          this.onCancelEdit();
+        }
+
+        this.loadMovieData();
+      },
+      error: (err) => {
+        console.error('Failed to delete post', err);
+      }
+    });
+  }
 }

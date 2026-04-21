@@ -1,7 +1,7 @@
 import { inject, Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { CreatePost, Post } from '../../shared/interfaces/post';
+import { CreatePost, Post, UpdatePost } from '../../shared/interfaces/post';
 import { CreateMovie, Movie } from '../../shared/interfaces/movie';
 
 
@@ -28,6 +28,13 @@ export class Api {
     return this.http.post<Movie>(`${this.apiUrl}/themes/${themeId}`, postData, { withCredentials: true })
   }
 
+    editPost(themeId: string, postId: string, postData: UpdatePost): Observable<Post> {
+    return this.http.put<Post>(`${this.apiUrl}/themes/${themeId}/posts/${postId}`, postData, { withCredentials: true });
+  }
+
+  deletePost(themeId: string, postId: string): Observable<Post> {
+    return this.http.delete<Post>(`${this.apiUrl}/themes/${themeId}/posts/${postId}`, { withCredentials: true });
+  }
 
   getLastestPosts(): Observable<Post[]> {
     return this.http.get<Post[]>(`${this.apiUrl}/posts?limit=5`)
