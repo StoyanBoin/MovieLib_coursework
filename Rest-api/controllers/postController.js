@@ -1,4 +1,4 @@
-const { userModel, themeModel, postModel, movieModel } = require('../models');
+const { userModel, themeModel, postModel } = require('../models');
 
 function newPost(text, userId, themeId) {
     return postModel.create({ text, userId, themeId })

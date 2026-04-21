@@ -28,7 +28,7 @@ export class Api {
     return this.http.post<Movie>(`${this.apiUrl}/themes/${themeId}`, postData, { withCredentials: true })
   }
 
-    editPost(themeId: string, postId: string, postData: UpdatePost): Observable<Post> {
+  editPost(themeId: string, postId: string, postData: UpdatePost): Observable<Post> {
     return this.http.put<Post>(`${this.apiUrl}/themes/${themeId}/posts/${postId}`, postData, { withCredentials: true });
   }
 
