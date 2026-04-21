@@ -84,7 +84,7 @@
                 <form (ngSubmit)="onPostComment()" #commentForm="ngForm">
 
                     <textarea name="commentText" id="commentText" [(ngModel)]="commentText" required minlength="5"
-                        placeholder="Write your comment..."></textarea>
+                        placeholder="Write your comment...."></textarea>
 
                     <button type="submit" class="btn-primary" [disabled]="commentForm.invalid">
                         Post

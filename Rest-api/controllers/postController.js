@@ -59,7 +59,6 @@ function deletePost(req, res, next) {
         postModel.findOneAndDelete({ _id: postId, userId }),
         userModel.findOneAndUpdate({ _id: userId }, { $pull: { posts: postId } }),
         themeModel.findOneAndUpdate({ _id: themeId }, { $pull: { posts: postId } }),
-        movieModel.findOneAndUpdate({ _id: themeId }, { $pull: { posts: postId } }),
     ])
         .then(([deletedOne, _, __]) => {
             if (deletedOne) {
