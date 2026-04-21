@@ -6,10 +6,11 @@ import { AuthService } from '../../../../core/services/auth';
 import { Movie } from '../../../interfaces/movie';
 import { Post } from '../../../interfaces/post';
 import { DateAgoPipe } from '../../../pipes/date-ago-pipe';
+import { DateFormatPipe } from '../../../pipes/date-format-pipe';
 
 @Component({
   selector: 'app-movie-content',
-  imports: [FormsModule, DateAgoPipe],
+  imports: [FormsModule, DateAgoPipe, DateFormatPipe],
   templateUrl: './movie-content.html',
   styleUrl: './movie-content.css',
 })
@@ -41,10 +42,25 @@ export class MovieContent implements OnInit {
       this.posts = data.filter((p: any) => p.themeId?._id === this.themeId);
     })
   }
-  
+
   onPostComment(): void {
     console.log("Posting comment", this.commentText);
     this.commentText = "";
+    const postText = this.commentText.trim();
+
+    if (!postText || !this.themeId) {
+      return;
+    }
+
+    this.apiService.createPost(this.themeId, { postText }).subscribe({
+      next: () => {
+        this.commentText = "";
+        this.loadMovieData();
+      },
+      error: (err) => {
+        console.error('Failed to create post', err);
+      }
+    });
   }
 
 }

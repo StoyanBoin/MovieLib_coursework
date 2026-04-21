@@ -1,7 +1,7 @@
 import { inject, Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { Post } from '../../shared/interfaces/post';
+import { CreatePost, Post } from '../../shared/interfaces/post';
 import { CreateMovie, Movie } from '../../shared/interfaces/movie';
 
 
@@ -23,6 +23,11 @@ export class Api {
   createMovie(movieData: CreateMovie): Observable<Movie> {
     return this.http.post<Movie>(`${this.apiUrl}/themes`, movieData, { withCredentials: true })
   }
+
+  createPost(themeId: string, postData: CreatePost): Observable<Movie> {
+    return this.http.post<Movie>(`${this.apiUrl}/themes/${themeId}`, postData, { withCredentials: true })
+  }
+
 
   getLastestPosts(): Observable<Post[]> {
     return this.http.get<Post[]>(`${this.apiUrl}/posts?limit=5`)

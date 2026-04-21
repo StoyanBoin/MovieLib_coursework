@@ -11,3 +11,7 @@ export interface Post {
     created_at: string;
     likes?: string[];
 }
+
+export interface CreatePost {
+    postText: string;
+}

@@ -5,14 +5,11 @@
         <!-- Header -->
         <div class="movie-header">
             <h1 class="movie-title">{{ movie.themeName}}</h1>
-            <span class="movie-date">{{ movie.created_at }}</span>
+            <span class="movie-date">{{ movie.created_at | dateFormat }}</span>
         </div>
 
-
-        <!-- Meta -->
         <div class="movie-meta">
             <p><strong>Author:</strong> {{ movie.userId.username }}</p>
-            <p><strong>Subscribers:</strong> {{ movie.subscribers.length }}</p>
         </div>
 
 
@@ -25,8 +22,8 @@
                 <!-- HEADER -->
                 <header class="header">
                     <p>
-                        <span class="author">{{ post.userId.username }}</span>
-                        posted on
+                        <span class="author">{{ post.userId.username }} </span>
+                        - posted on
                         <time>{{ post.created_at | dateAgo }}</time>
                     </p>
                 </header>
@@ -48,10 +45,30 @@
                 </footer>
 
             </div>
-
             }
 
         </section>
+
+        <div class="answer-comment">
+
+            <p class="label">
+                <span>{{ currentUser() }}</span> Comment:
+            </p>
+
+            <div class="answer">
+                <form (ngSubmit)="onPostComment()" #commentForm="ngForm">
+
+                    <textarea name="commentText" id="commentText" [(ngModel)]="commentText" required minlength="5"
+                        placeholder="Write your comment..."></textarea>
+
+                    <button type="submit" class="btn-primary" [disabled]="commentForm.invalid">
+                        Post
+                    </button>
+
+                </form>
+            </div>
+
+        </div>
 
 
         <!-- <div class="author-actions" *ngIf="isAuthor()">
@@ -59,7 +76,7 @@
                 Edit Movie
             </button>
 
-            <button class="btn-cancel" routerLink="/movies">
+            <button class="btn-cancel" [routerLink]="['/movies', movie._id]">
                 Cancel
             </button>
         </div> -->
