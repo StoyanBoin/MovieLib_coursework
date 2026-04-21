@@ -1,0 +1,72 @@
+<section class="movie-content-wrapper">
+
+    <div class="movie-card">
+        @if (movie) {
+        <!-- Header -->
+        <div class="movie-header">
+            <h1 class="movie-title">{{ movie.themeName}}</h1>
+            <span class="movie-date">{{ movie.created_at }}</span>
+        </div>
+
+
+        <!-- Meta -->
+        <div class="movie-meta">
+            <p><strong>Author:</strong> {{ movie.userId.username }}</p>
+            <p><strong>Subscribers:</strong> {{ movie.subscribers.length }}</p>
+        </div>
+
+
+        <section class="post-list">
+
+            @for (post of posts; track post._id) {
+
+            <div class="post-card">
+
+                <!-- HEADER -->
+                <header class="header">
+                    <p>
+                        <span class="author">{{ post.userId.username }}</span>
+                        posted on
+                        <time>{{ post.created_at | dateAgo }}</time>
+                    </p>
+                </header>
+
+                <!-- MAIN -->
+                <div class="post-main">
+                    <div class="avatar">
+                        <img src="/assets/avatar.png" alt="avatar" />
+                    </div>
+
+                    <div class="content">
+                        <p>{{ post.text }}</p>
+                    </div>
+                </div>
+
+                <!-- FOOTER -->
+                <footer class="footer">
+                    <p><span>{{ post.likes?.length || 0 }}</span> likes</p>
+                </footer>
+
+            </div>
+
+            }
+
+        </section>
+
+
+        <!-- <div class="author-actions" *ngIf="isAuthor()">
+            <button class="btn-edit" (click)="editMovie(movie._id)">
+                Edit Movie
+            </button>
+
+            <button class="btn-cancel" routerLink="/movies">
+                Cancel
+            </button>
+        </div> -->
+
+        }@else {
+        <p>Loading...</p>
+        }
+    </div>
+
+</section>
