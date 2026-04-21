@@ -44,8 +44,6 @@ export class MovieContent implements OnInit {
   }
 
   onPostComment(): void {
-    console.log("Posting comment", this.commentText);
-    this.commentText = "";
     const postText = this.commentText.trim();
 
     if (!postText || !this.themeId) {
