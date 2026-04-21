@@ -7,6 +7,7 @@ import { Movie } from '../../../interfaces/movie';
 import { Post } from '../../../interfaces/post';
 import { DateAgoPipe } from '../../../pipes/date-ago-pipe';
 import { DateFormatPipe } from '../../../pipes/date-format-pipe';
+import { NotificationService } from '../../../../core/services/notification';
 
 @Component({
   selector: 'app-movie-content',
@@ -29,11 +30,14 @@ export class MovieContent implements OnInit {
 
   currentUser = computed(() => this.autService.currentUser()?.username ?? 'Unknow')
   currentUserId = computed(() => this.autService.currentUser()?._id ?? '')
+  private notificationService = inject(NotificationService);
+  user = this.autService.currentUser;
 
   ngOnInit(): void {
     this.themeId = this.route.snapshot.params['themeId']
     this.loadMovieData();
   }
+
 
   loadMovieData(): void {
     this.apiService.getMovies().subscribe((movies) => {
@@ -55,14 +59,16 @@ export class MovieContent implements OnInit {
     this.apiService.createPost(this.themeId, { postText }).subscribe({
       next: () => {
         this.commentText = "";
+        this.notificationService.showSuccess('Post successfully!');
         this.loadMovieData();
       },
       error: (err) => {
         console.error('Failed to create post', err);
+        this.notificationService.showError('Failed to post Please try again.');
       }
     });
   }
-    canManagePost(post: Post): boolean {
+  canManagePost(post: Post): boolean {
     const postAuthorId = post.userId?._id;
     const loggedInUserId = this.currentUserId();
 
@@ -76,6 +82,7 @@ export class MovieContent implements OnInit {
   onStartEdit(post: Post): void {
     this.editedPostId = post._id;
     this.editedPostText = post.text;
+    this.notificationService.showSuccess('Edit post successfully!');
   }
 
   onCancelEdit(): void {

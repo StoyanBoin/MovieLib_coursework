@@ -33,7 +33,6 @@
                     <div class="avatar">
                         <img src="/assets/avatar.png" alt="avatar" />
                     </div>
-
                     <div class="content">
                         @if (editedPostId === post._id) {
                         <textarea class="edit-textarea" [(ngModel)]="editedPostText" name="editPostText-{{post._id}}"
@@ -79,17 +78,16 @@
             <p class="label">
                 <span>{{ currentUser() }}</span> Comment:
             </p>
-
             <div class="answer">
                 <form (ngSubmit)="onPostComment()" #commentForm="ngForm">
 
                     <textarea name="commentText" id="commentText" [(ngModel)]="commentText" required minlength="5"
                         placeholder="Write your comment...."></textarea>
-
+                    @if (user()) {
                     <button type="submit" class="btn-primary" [disabled]="commentForm.invalid">
                         Post
                     </button>
-
+                    }
                 </form>
             </div>
 
